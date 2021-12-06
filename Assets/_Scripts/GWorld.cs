@@ -6,18 +6,16 @@ public sealed class GWorld
 {
     private static readonly GWorld instance = new GWorld();
     private static WorldStates world;
-    private static Queue<GameObject> patients;
-    private static Queue<GameObject> cubicles;
     private static List<GameObject> guns;
     private static List<GameObject> hiding;
+    private static List<GameObject> enemiesChasingPlayer;
 
     static GWorld()
     {
         world = new WorldStates();
-        patients = new Queue<GameObject>();
-        cubicles = new Queue<GameObject>();
         guns = new List<GameObject>();
         hiding = new List<GameObject>();
+        enemiesChasingPlayer = new List<GameObject>();
     }
 
     private GWorld()
@@ -73,33 +71,27 @@ public sealed class GWorld
         world.ModifyState("AvailableGuns", 1);
     }
 
-    public GameObject RemoveCubicle()
+    public List<GameObject> GetChasingEnemy()
     {
-        if (cubicles.Count < 1)
+        if (enemiesChasingPlayer.Count < 1)
         {
             return null;
         }
-        return cubicles.Dequeue();
+        return enemiesChasingPlayer;
     }
 
-    public void AddCubicle(GameObject cubi)
+    public void RemoveChasingEnemy(GameObject enemy)
     {
-        cubicles.Enqueue(cubi);
-        world.ModifyState("FreeCubicle", 1);
-    }
-
-    public GameObject RemovePatient()
-    {
-        if (patients.Count < 1)
+        if (enemiesChasingPlayer.Count < 1)
         {
-            return null;
+            return;
         }
-        return patients.Dequeue();
+        enemiesChasingPlayer.Remove(enemy);
     }
 
-    public void AddPatient(GameObject patient)
+    public void AddChasingEnemy(GameObject enemy)
     {
-        patients.Enqueue(patient);
+        enemiesChasingPlayer.Add(enemy);
     }
 
     public static GWorld Instance

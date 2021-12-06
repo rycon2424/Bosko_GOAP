@@ -15,6 +15,7 @@ public class A_EnemyHuntPlayer : GAction
         if (target == null)
             return false;
         agent.SetDestination(target.transform.position);
+        GWorld.Instance.AddChasingEnemy(gameObject);
         return true;
     }
 
@@ -25,6 +26,7 @@ public class A_EnemyHuntPlayer : GAction
         GWorld.Instance.AddGuns(g);
         g.SetActive(true);
         GWorld.Instance.GetWorld().ModifyState("ChasingPlayer", -1);
+        GWorld.Instance.RemoveChasingEnemy(gameObject);
         return true;
     }
 

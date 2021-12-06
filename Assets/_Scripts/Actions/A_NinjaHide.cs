@@ -46,7 +46,6 @@ public class A_NinjaHide : GAction
 
     public override bool PostPerform()
     {
-        Debug.Log("Done hiding");
         return true;
     }
     
