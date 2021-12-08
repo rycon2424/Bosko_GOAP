@@ -9,7 +9,7 @@ public class A_EnemyFindGun : GAction
 
     public override bool PrePerform()
     {
-        List<GameObject> availableGuns = GWorld.Instance.GetAllGuns();
+        List<GameObject> availableGuns = GWorld.Instance.GetAllWeapons();
 
         GameObject closestGun = null;
         foreach (var gun in availableGuns)
@@ -32,7 +32,7 @@ public class A_EnemyFindGun : GAction
         if (target == null)
             return false;
         inventory.AddItem(target);
-        GWorld.Instance.RemoveGun(target);
+        GWorld.Instance.RemoveWeapon(target);
         agent.SetDestination(target.transform.position);
         return true;
     }

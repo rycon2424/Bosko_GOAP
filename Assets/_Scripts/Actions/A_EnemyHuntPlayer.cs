@@ -23,7 +23,7 @@ public class A_EnemyHuntPlayer : GAction
     {
         GameObject g = inventory.FindItemWithTag("Gun");
         inventory.RemoveItem(g);
-        GWorld.Instance.AddGuns(g);
+        GWorld.Instance.AddWeapon(g);
         g.SetActive(true);
         GWorld.Instance.GetWorld().ModifyState("ChasingPlayer", -1);
         GWorld.Instance.RemoveChasingEnemy(gameObject);

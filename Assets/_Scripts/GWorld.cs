@@ -6,14 +6,14 @@ public sealed class GWorld
 {
     private static readonly GWorld instance = new GWorld();
     private static WorldStates world;
-    private static List<GameObject> guns;
+    private static List<GameObject> weapons;
     private static List<GameObject> hiding;
     private static List<GameObject> enemiesChasingPlayer;
 
     static GWorld()
     {
         world = new WorldStates();
-        guns = new List<GameObject>();
+        weapons = new List<GameObject>();
         hiding = new List<GameObject>();
         enemiesChasingPlayer = new List<GameObject>();
     }
@@ -46,29 +46,29 @@ public sealed class GWorld
         hiding.Add(hidingSpot);
     }
 
-    public List<GameObject> GetAllGuns()
+    public List<GameObject> GetAllWeapons()
     {
-        if (guns.Count < 1)
+        if (weapons.Count < 1)
         {
             return null;
         }
-        return guns;
+        return weapons;
     }
 
-    public void RemoveGun(GameObject gun)
+    public void RemoveWeapon(GameObject weapon)
     {
-        if (guns.Count < 1)
+        if (weapons.Count < 1)
         {
             return;
         }
-        guns.Remove(gun);
-        world.ModifyState("AvailableGuns", -1);
+        weapons.Remove(weapon);
+        world.ModifyState("AvailableWeapons", -1);
     }
 
-    public void AddGuns(GameObject gun)
+    public void AddWeapon(GameObject weapon)
     {
-        guns.Add(gun);
-        world.ModifyState("AvailableGuns", 1);
+        weapons.Add(weapon);
+        world.ModifyState("AvailableWeapons", 1);
     }
 
     public List<GameObject> GetChasingEnemy()
