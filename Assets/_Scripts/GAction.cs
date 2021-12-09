@@ -13,6 +13,7 @@ public abstract class GAction : MonoBehaviour
     public WorldState[] preConditions;
     public WorldState[] afterEffects;
     public NavMeshAgent agent;
+    public Animator anim;
 
     public Dictionary<string, int> preconditions;
     public Dictionary<string, int> effects;
@@ -35,6 +36,7 @@ public abstract class GAction : MonoBehaviour
     {
         GameObject parent = transform.parent.gameObject;
         agent = parent.GetComponent<NavMeshAgent>();
+        anim = parent.GetComponent<Animator>();
         if(preconditions != null)
         {
             foreach (var w in preConditions)

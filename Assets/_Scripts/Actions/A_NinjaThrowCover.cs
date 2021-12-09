@@ -21,6 +21,8 @@ public class A_NinjaThrowCover : GAction
 
         if (target == null)
             return false;
+        anim.SetBool("Hide", false);
+        anim.SetBool("Walking", false);
         return true;
     }
 
@@ -61,6 +63,8 @@ public class A_NinjaThrowCover : GAction
     {
         target = null;
         smoke.SetActive(false);
+        anim.SetBool("Hide", false);
+        anim.SetBool("Walking", false);
         return true;
     }
 

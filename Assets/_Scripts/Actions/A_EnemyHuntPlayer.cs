@@ -6,6 +6,7 @@ public class A_EnemyHuntPlayer : GAction
 {
     [Header("GoalSpecific")]
     public float distanceTillGoal;
+    public GameObject weapon;
     private Player p;
 
     public override bool PrePerform()
@@ -16,6 +17,7 @@ public class A_EnemyHuntPlayer : GAction
             return false;
         agent.SetDestination(target.transform.position);
         GWorld.Instance.AddChasingEnemy(gameObject);
+        anim.SetBool("Running", true);
         return true;
     }
 
@@ -25,14 +27,23 @@ public class A_EnemyHuntPlayer : GAction
         inventory.RemoveItem(g);
         GWorld.Instance.AddWeapon(g);
         g.SetActive(true);
+        weapon.SetActive(false);
+
         GWorld.Instance.GetWorld().ModifyState("ChasingPlayer", -1);
         GWorld.Instance.RemoveChasingEnemy(gameObject);
+
+        anim.SetBool("Attack", false);
         return true;
     }
 
     public override void ActionUpdate()
     {
         distanceTillGoal = Vector3.Distance(transform.position, target.transform.position);
+        if (distanceTillGoal < 1.5f)
+        {
+            agent.SetDestination(transform.position);
+            anim.SetBool("Attack", true);
+        }
         if (distanceTillGoal < 5f)
         {
             agent.SetDestination(target.transform.position + (transform.position - target.transform.position).normalized);

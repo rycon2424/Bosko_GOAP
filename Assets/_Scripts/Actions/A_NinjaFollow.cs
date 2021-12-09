@@ -17,6 +17,14 @@ public class A_NinjaFollow : GAction
     {
         distanceTillGoal = Vector3.Distance(transform.position, target.transform.position);
         agent.SetDestination(target.transform.position + (transform.position - target.transform.position).normalized * 2);
+        if (distanceTillGoal > 2.1f)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
         if (GWorld.Instance.GetWorld().StateValue("ChasingPlayer") > 0)
         {
             complete = true;

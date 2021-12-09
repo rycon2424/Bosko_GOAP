@@ -16,6 +16,8 @@ public class A_EnemyPatrol : GAction
         target = waypoints[Random.Range(0, waypoints.Length)].gameObject;
         agent.SetDestination(target.transform.position);
         GWorld.Instance.GetWorld().ModifyState("ChasingPlayer", 0);
+        anim.SetBool("Running", false);
+        anim.SetBool("Attack", false);
         return true;
     }
     
@@ -42,8 +44,8 @@ public class A_EnemyPatrol : GAction
     bool CheckIfPlayerVisible()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, p.transform.position - transform.position);
-        Debug.DrawRay(transform.position, (p.transform.position - transform.position) * 10, Color.red);
+        Ray ray = new Ray(transform.position, p.transform.position - transform.position + Vector3.up);
+        Debug.DrawRay(transform.position, (p.transform.position - transform.position + Vector3.up) * 10, Color.red);
         if (Physics.Raycast(ray, out hit, 4))
         {
             if (hit.collider.CompareTag("Player"))

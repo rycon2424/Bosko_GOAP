@@ -32,6 +32,8 @@ public class A_NinjaHide : GAction
         if (target == null)
             return false;
         agent.SetDestination(target.transform.position);
+        anim.SetBool("Hide", true);
+        anim.SetBool("Walking", true);
         return true;
     }
 
@@ -46,6 +48,8 @@ public class A_NinjaHide : GAction
 
     public override bool PostPerform()
     {
+        anim.SetBool("Hide", false);
+        anim.SetBool("Walking", false);
         return true;
     }
     

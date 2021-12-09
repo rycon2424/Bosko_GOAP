@@ -2,43 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class A_EnemyFindGun : GAction
+public class A_EnemyFindWeapon : GAction
 {
     [Header("GoalSpecific")]
     public float distanceTillGoal;
+    public GameObject weapon;
 
     public override bool PrePerform()
     {
-        List<GameObject> availableGuns = GWorld.Instance.GetAllWeapons();
+        List<GameObject> availableWeapons = GWorld.Instance.GetAllWeapons();
 
-        GameObject closestGun = null;
-        foreach (var gun in availableGuns)
+        GameObject closestWeapon = null;
+        foreach (var weap in availableWeapons)
         {
-            if (closestGun == null)
+            if (closestWeapon == null)
             {
-                closestGun = gun;
+                closestWeapon = weap;
             }
             else
             {
-                float distanceClosestgun = Vector3.Distance(transform.position, closestGun.transform.position);
-                float distanceNewGun = Vector3.Distance(transform.position, gun.transform.position);
+                float distanceClosestgun = Vector3.Distance(transform.position, closestWeapon.transform.position);
+                float distanceNewGun = Vector3.Distance(transform.position, weap.transform.position);
                 if (distanceNewGun < distanceClosestgun)
                 {
-                    closestGun = gun;
+                    closestWeapon = weap;
                 }
             }
         }
-        target = closestGun;
+        target = closestWeapon;
         if (target == null)
             return false;
         inventory.AddItem(target);
         GWorld.Instance.RemoveWeapon(target);
         agent.SetDestination(target.transform.position);
+        anim.SetBool("Running", true);
         return true;
     }
 
     public override bool PostPerform()
     {
+        weapon.SetActive(true);
         target.SetActive(false);
         return true;
     }
