@@ -106,10 +106,6 @@ public class GAgent : MonoBehaviour
             currentAction = actionQueue.Dequeue();
             if (currentAction.PrePerform())
             {
-                if (currentAction.target == null && currentAction.targetTag != "")
-                {
-                    currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
-                }
                 if (currentAction.target != null)
                 {
                     currentAction.running = true;

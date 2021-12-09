@@ -44,6 +44,10 @@ public class A_EnemyHuntPlayer : GAction
             agent.SetDestination(transform.position);
             anim.SetBool("Attack", true);
         }
+        else
+        {
+            anim.SetBool("Attack", false);
+        }
         if (distanceTillGoal < 5f)
         {
             agent.SetDestination(target.transform.position + (transform.position - target.transform.position).normalized);

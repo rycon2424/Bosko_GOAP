@@ -8,18 +8,15 @@ public abstract class GAction : MonoBehaviour
     public string actionName = "Action";
     public float cost = 1;
     public GameObject target;
-    public string targetTag;
     public float duration = 0;
     public WorldState[] preConditions;
     public WorldState[] afterEffects;
     public NavMeshAgent agent;
-    public Animator anim;
+    protected Animator anim;
 
     public Dictionary<string, int> preconditions;
     public Dictionary<string, int> effects;
-
-    public WorldStates agentState;
-
+    
     public bool running = false;
     public bool complete = false;
 
@@ -32,7 +29,7 @@ public abstract class GAction : MonoBehaviour
         effects = new Dictionary<string, int>();
     }
 
-    public void Awake()
+    void Awake()
     {
         GameObject parent = transform.parent.gameObject;
         agent = parent.GetComponent<NavMeshAgent>();
