@@ -23,6 +23,14 @@ public sealed class GWorld
 
     }
 
+    public void ResetWorld()
+    {
+        world = new WorldStates();
+        weapons = new List<GameObject>();
+        hidingSpots = new List<GameObject>();
+        enemiesChasingPlayer = new List<GameObject>();
+    }
+
     public List<GameObject> GetAllHidingSpots()
     {
         if (hidingSpots.Count < 1)
