@@ -46,6 +46,7 @@ public class A_NinjaThrowCover : GAction
         enemyAgent.speed = 1;
             
         smoke.transform.position = target.transform.position;
+        smoke.transform.parent = null;
         smoke.SetActive(true);
         smoke.GetComponent<ParticleSystem>().Play();
 
@@ -62,11 +63,20 @@ public class A_NinjaThrowCover : GAction
     public override bool PostPerform()
     {
         target = null;
-        smoke.SetActive(false);
+        if (smoke.activeSelf == true)
+        {
+            Invoke("HideSmoke", 1);
+        }
         anim.SetBool("Hide", false);
         anim.SetBool("Walking", false);
         return true;
     }
+
+    void HideSmoke()
+    {
+        smoke.SetActive(false);
+    }
+
 
     private void OnDrawGizmos()
     {

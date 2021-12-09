@@ -4665,14 +4665,12 @@ MonoBehaviour:
   actionName: Patrolling
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions: []
   afterEffects:
   - key: foundPlayer
     value: 1
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -4901,14 +4899,12 @@ MonoBehaviour:
   actionName: Follow Player
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions: []
   afterEffects:
   - key: hide
     value: 1
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -5139,7 +5135,6 @@ MonoBehaviour:
   actionName: Find Weapon
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions:
   - key: foundPlayer
@@ -5148,7 +5143,6 @@ MonoBehaviour:
   - key: huntPlayer
     value: 1
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -5386,7 +5380,6 @@ MonoBehaviour:
   actionName: Hunt Player
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions:
   - key: huntPlayer
@@ -5395,7 +5388,6 @@ MonoBehaviour:
   - key: killPlayer
     value: 1
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -8936,7 +8928,6 @@ MonoBehaviour:
   actionName: Cover Player
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions:
   - key: hidden
@@ -8945,7 +8936,6 @@ MonoBehaviour:
   - key: protectPlayer
     value: 0
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -9828,7 +9818,6 @@ MonoBehaviour:
   actionName: Hiding
   cost: 1
   target: {fileID: 0}
-  targetTag: 
   duration: 0
   preConditions:
   - key: ChasingPlayer
@@ -9839,7 +9828,6 @@ MonoBehaviour:
   - key: hidden
     value: 1
   agent: {fileID: 0}
-  anim: {fileID: 0}
   running: 0
   complete: 0
   inventory:
@@ -11159,28 +11147,28 @@ Transform:
   - {fileID: 911298689}
   - {fileID: 645288972}
   - {fileID: 1653479624}
+  - {fileID: 780602184}
   - {fileID: 733924490}
   - {fileID: 1462788507}
   - {fileID: 630210818}
-  - {fileID: 95717748}
-  - {fileID: 1017565892}
   - {fileID: 1034901771}
+  - {fileID: 95717748}
+  - {fileID: 142156285}
+  - {fileID: 1017565892}
   - {fileID: 498723348}
+  - {fileID: 1489855318}
   - {fileID: 1764069797}
   - {fileID: 747391748}
   - {fileID: 1012768380}
   - {fileID: 194266828}
+  - {fileID: 1297610957}
   - {fileID: 436350994}
   - {fileID: 716533478}
   - {fileID: 1987947559}
   - {fileID: 935532910}
-  - {fileID: 1489855318}
   - {fileID: 1891510354}
-  - {fileID: 1297610957}
   - {fileID: 46438053}
-  - {fileID: 780602184}
   - {fileID: 354418500}
-  - {fileID: 142156285}
   - {fileID: 1830793917}
   - {fileID: 1786947546}
   - {fileID: 1368877378}
